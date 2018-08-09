@@ -14,10 +14,10 @@
     <tbody>
       <tr *ngFor="let product of products">
         <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
+        <td><input [(ngModel)]="product.price" placeholder="Price"></td>
         <td>{{product.code}}</td>
         <td>{{product.creator}}</td>
-        <td>{{product.lastModified}}</td>
+        <td>{{product.lastModified * 1000 | date:'mediumDate'}}</td>
         <td>delete {{product.id}}</td>
       </tr>
     </tbody>
