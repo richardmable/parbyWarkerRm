@@ -21,7 +21,6 @@ router.get('/product/:id', (req, res, next) => {
   res.json(product);
 })
 
-
 // update a product with any field
 router.patch('/products/:id', (req, res, next) => {
   let id = +req.params.id;
@@ -35,5 +34,19 @@ router.patch('/products/:id', (req, res, next) => {
   // return the updated product
   res.send(product);
 });
+
+// delete a product
+router.delete('/products/:id', (req, res, next) => {
+  let id = +req.params.id;
+  // find the product to update
+  let product = products.find(product => product.id === id);
+  if (product){
+    // find the index of that product in the products array and remove it
+    products.splice( products.indexOf(product), 1 );
+    res.send('Product deleted.')
+  } else {
+    res.send('Product could not be found for deletion.')
+  }
+})
 
 export default router;
