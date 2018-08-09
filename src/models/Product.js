@@ -1,11 +1,11 @@
 export default class Product {
-  constructor(id, name, code, price, creator, last_modified){
+  constructor(id, name, code, price, creator, lastModified){
     this.id = id;
     this.name = name;
     this.code = code;
     this.price = price;
     this.creator = creator;
-    this.last_modified = last_modified;
+    this.lastModified = lastModified;
   }
   getProduct(){
     return this;

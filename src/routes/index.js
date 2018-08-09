@@ -37,9 +37,9 @@ router.patch('/products/:id', (req, res, next) => {
   if (product){
     // assign the changed props to the product's props
     Object.assign(product, req.body);
-    // force the last_modified prop to current time in UNIX timestamp
+    // force the lastModified prop to current time in UNIX timestamp
     let currentTime = Math.round((new Date()).getTime() / 1000);
-    product.last_modified = currentTime;
+    product.lastModified = currentTime;
     // return the updated product
     res.send(product);
   } else {
