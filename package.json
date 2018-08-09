@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node app.js --presets es2015"
+    "start": "nodemon server.js --exec babel-node --presets es2015"
   },
   "author": "Richard Mable",
   "license": "ISC",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "nodemon": "^1.18.3"
   }
 }
