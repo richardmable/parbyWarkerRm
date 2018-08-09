@@ -11,14 +11,22 @@ let products = [
 
 // The product list page
 router.get('/products', (req, res, next) => {
-  res.json(products);
+  if (products.length > 0){
+    res.json(products);
+  } else {
+    res.json('Looks like there are no products at all!')
+  }
 })
 
 // get an individual product by id
 router.get('/product/:id', (req, res, next) => {
   let id = +req.params.id;
   let product = products.find(product => product.id === id);
-  res.json(product);
+  if (product){
+    res.json(product);
+  } else {
+    res.json('Could not find a product with that id.')
+  }
 })
 
 // update a product with any field
@@ -26,13 +34,17 @@ router.patch('/products/:id', (req, res, next) => {
   let id = +req.params.id;
   // find the product to update
   let product = products.find(product => product.id === id);
-  // assign the changed props to the product's props
-  Object.assign(product, req.body);
-  // force the last_modified prop to current time in UNIX timestamp
-  let currentTime = Math.round((new Date()).getTime() / 1000);
-  product.last_modified = currentTime
-  // return the updated product
-  res.send(product);
+  if (product){
+    // assign the changed props to the product's props
+    Object.assign(product, req.body);
+    // force the last_modified prop to current time in UNIX timestamp
+    let currentTime = Math.round((new Date()).getTime() / 1000);
+    product.last_modified = currentTime
+    // return the updated product
+    res.send(product);
+  } else {
+    res.send('Could not find product with that id to update')
+  }
 });
 
 // delete a product
