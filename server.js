@@ -1,7 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path'
 import router from './src/routes';
+
 
 let app = express();
 
@@ -12,6 +14,7 @@ let corsOptions = {
 }
 
 app.use(cors(corsOptions))
+app.use(express.static('public'))
 
 // enable body parser for parsing the body of requests
 app.use(bodyParser.json());

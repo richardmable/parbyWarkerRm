@@ -9,6 +9,11 @@ let products = [
   new Product(3, "Igneous Matte", "PW001Z", 64.00, "Arya Stark", 1566604800)
 ];
 
+// always display something at the root
+router.get('/', (req, res, next) => {
+  return res.json("We're up!");
+});
+
 // The product list page
 router.get('/products', (req, res, next) => {
   if (products.length > 0){
@@ -29,7 +34,7 @@ router.get('/product/:id', (req, res, next) => {
   }
 });
 
-// update a product with any field
+// update a product with any prop, use patch as usually just updating one prop
 router.patch('/products/:id', (req, res, next) => {
   let id = +req.params.id;
   // find the product to update
