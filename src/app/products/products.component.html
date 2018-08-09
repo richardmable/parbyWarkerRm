@@ -12,13 +12,14 @@
       <tr>
     </thead>
     <tbody>
+      <!-- add a check that products exist first -->
       <tr *ngFor="let product of products">
         <td>{{product.name}}</td>
-        <td><input [(ngModel)]="product.price" placeholder="Price"></td>
+        <td><input [(ngModel)]="product.price" placeholder="Price"><button (click)="updateProduct(product)">Update</button></td>
         <td>{{product.code}}</td>
         <td>{{product.creator}}</td>
         <td>{{product.lastModified * 1000 | date:'mediumDate'}}</td>
-        <td>delete {{product.id}}</td>
+        <td><button (click)="deleteProduct(product)">Delete Product</button></td>
       </tr>
     </tbody>
   </table>

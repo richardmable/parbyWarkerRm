@@ -10,6 +10,7 @@ let products = [
 ];
 
 // always display something at the root
+// could add a reset for the product array later
 router.get('/', (req, res, next) => {
   return res.json("We're up!");
 });
@@ -35,7 +36,7 @@ router.get('/product/:id', (req, res, next) => {
 });
 
 // update a product with any prop, use patch as usually just updating one prop
-router.patch('/products/:id', (req, res, next) => {
+router.patch('/product/:id', (req, res, next) => {
   let id = +req.params.id;
   // find the product to update
   let product = products.find(product => product.id === id);
@@ -46,23 +47,23 @@ router.patch('/products/:id', (req, res, next) => {
     let currentTime = Math.round((new Date()).getTime() / 1000);
     product.lastModified = currentTime;
     // return the updated product
-    res.send(product);
+    res.json(product);
   } else {
-    res.send('Could not find product with that id to update')
+    res.json('Could not find product with that id to update')
   }
 });
 
 // delete a product
-router.delete('/products/:id', (req, res, next) => {
+router.delete('/product/:id', (req, res, next) => {
   let id = +req.params.id;
   // find the product to update
   let product = products.find(product => product.id === id);
   if (product){
     // find the index of that product in the products array and remove it
     products.splice( products.indexOf(product), 1 );
-    res.send('Product deleted.');
+    res.json('Product deleted.');
   } else {
-    res.send('Product could not be found for deletion.');
+    res.json('Product could not be found for deletion.');
   }
 });
 
