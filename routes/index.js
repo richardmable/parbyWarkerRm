@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 let router = express.Router();
 import Product from '../models/product';
 
@@ -7,7 +7,7 @@ let products = [
   new Product(1, "Turtoise Frame", "PW1689", 99.00, "Jon Snow", 1538359384),
   new Product(2, "Aviator Sunglasses", "PW134E", 74.00, "Samwell Tarly", 153316800),
   new Product(3, "Igneous Matte", "PW001Z", 64.00, "Arya Stark", 1566604800)
-]
+];
 
 // The product list page
 router.get('/products', (req, res, next) => {
@@ -16,7 +16,7 @@ router.get('/products', (req, res, next) => {
   } else {
     res.json('Looks like there are no products at all!')
   }
-})
+});
 
 // get an individual product by id
 router.get('/product/:id', (req, res, next) => {
@@ -27,7 +27,7 @@ router.get('/product/:id', (req, res, next) => {
   } else {
     res.json('Could not find a product with that id.')
   }
-})
+});
 
 // update a product with any field
 router.patch('/products/:id', (req, res, next) => {
@@ -39,7 +39,7 @@ router.patch('/products/:id', (req, res, next) => {
     Object.assign(product, req.body);
     // force the last_modified prop to current time in UNIX timestamp
     let currentTime = Math.round((new Date()).getTime() / 1000);
-    product.last_modified = currentTime
+    product.last_modified = currentTime;
     // return the updated product
     res.send(product);
   } else {
@@ -55,10 +55,10 @@ router.delete('/products/:id', (req, res, next) => {
   if (product){
     // find the index of that product in the products array and remove it
     products.splice( products.indexOf(product), 1 );
-    res.send('Product deleted.')
+    res.send('Product deleted.');
   } else {
-    res.send('Product could not be found for deletion.')
+    res.send('Product could not be found for deletion.');
   }
-})
+});
 
 export default router;
