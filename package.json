@@ -1,0 +1,20 @@
+{
+  "name": "parbywarker",
+  "version": "1.0.0",
+  "description": "CRUD operations on a basic product list",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node app.js --presets es2015"
+  },
+  "author": "Richard Mable",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
